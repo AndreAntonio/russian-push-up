@@ -13,6 +13,10 @@
 		19AD94431F132DC10039E179 /* russian_push_up.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 19AD94411F132DC10039E179 /* russian_push_up.xcdatamodeld */; };
 		19AD94451F132DC10039E179 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19AD94441F132DC10039E179 /* Assets.xcassets */; };
 		19AD94481F132DC10039E179 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19AD94461F132DC10039E179 /* LaunchScreen.storyboard */; };
+		19BB7F451F2AE5EB001CBF2A /* InfoPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB7F441F2AE5EB001CBF2A /* InfoPageViewController.swift */; };
+		19BB7F471F2AE8DF001CBF2A /* FirstInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB7F461F2AE8DF001CBF2A /* FirstInfoViewController.swift */; };
+		19BB7F491F2AE8F2001CBF2A /* SecondInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB7F481F2AE8F2001CBF2A /* SecondInfoViewController.swift */; };
+		19BB7F4B1F2AE8FE001CBF2A /* ThirdInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB7F4A1F2AE8FE001CBF2A /* ThirdInfoViewController.swift */; };
 		5956BCFB1F140CF700963461 /* Vladmir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5956BCFA1F140CF700963461 /* Vladmir.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +29,10 @@
 		19AD94441F132DC10039E179 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19AD94471F132DC10039E179 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19AD94491F132DC10039E179 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19BB7F441F2AE5EB001CBF2A /* InfoPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPageViewController.swift; sourceTree = "<group>"; };
+		19BB7F461F2AE8DF001CBF2A /* FirstInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstInfoViewController.swift; sourceTree = "<group>"; };
+		19BB7F481F2AE8F2001CBF2A /* SecondInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondInfoViewController.swift; sourceTree = "<group>"; };
+		19BB7F4A1F2AE8FE001CBF2A /* ThirdInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdInfoViewController.swift; sourceTree = "<group>"; };
 		5956BCFA1F140CF700963461 /* Vladmir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vladmir.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,12 +68,16 @@
 			children = (
 				19AD943A1F132DC10039E179 /* AppDelegate.swift */,
 				19AD943C1F132DC10039E179 /* ViewController.swift */,
+				19BB7F441F2AE5EB001CBF2A /* InfoPageViewController.swift */,
 				19AD943E1F132DC10039E179 /* Main.storyboard */,
 				19AD94441F132DC10039E179 /* Assets.xcassets */,
 				19AD94461F132DC10039E179 /* LaunchScreen.storyboard */,
 				19AD94491F132DC10039E179 /* Info.plist */,
 				5956BCFA1F140CF700963461 /* Vladmir.swift */,
 				19AD94411F132DC10039E179 /* russian_push_up.xcdatamodeld */,
+				19BB7F461F2AE8DF001CBF2A /* FirstInfoViewController.swift */,
+				19BB7F481F2AE8F2001CBF2A /* SecondInfoViewController.swift */,
+				19BB7F4A1F2AE8FE001CBF2A /* ThirdInfoViewController.swift */,
 			);
 			path = "russian-push-up";
 			sourceTree = "<group>";
@@ -146,7 +158,11 @@
 				19AD943D1F132DC10039E179 /* ViewController.swift in Sources */,
 				19AD943B1F132DC10039E179 /* AppDelegate.swift in Sources */,
 				19AD94431F132DC10039E179 /* russian_push_up.xcdatamodeld in Sources */,
+				19BB7F451F2AE5EB001CBF2A /* InfoPageViewController.swift in Sources */,
 				5956BCFB1F140CF700963461 /* Vladmir.swift in Sources */,
+				19BB7F491F2AE8F2001CBF2A /* SecondInfoViewController.swift in Sources */,
+				19BB7F4B1F2AE8FE001CBF2A /* ThirdInfoViewController.swift in Sources */,
+				19BB7F471F2AE8DF001CBF2A /* FirstInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
