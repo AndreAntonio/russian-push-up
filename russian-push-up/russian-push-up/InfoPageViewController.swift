@@ -21,7 +21,7 @@ class InfoPageViewController: UIPageViewController, UIPageViewControllerDataSour
 
     private func myViewControllersFunc(identifier : String) -> UIViewController {
         
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InfoPageViewController")
         
     }
     

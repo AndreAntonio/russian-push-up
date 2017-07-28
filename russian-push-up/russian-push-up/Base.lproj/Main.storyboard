@@ -9,10 +9,73 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Page View Controller-->
+        <scene sceneID="FxO-eF-N0R">
+            <objects>
+                <pageViewController storyboardIdentifier="IntroPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="C2p-2X-0v8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YLr-Fq-HI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="156" y="-638"/>
+        </scene>
+        <!--First Intro View Controller-->
+        <scene sceneID="Sal-w2-c4d">
+            <objects>
+                <viewController storyboardIdentifier="FirstIntroViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Obr-oR-UIs" customClass="FirstIntroViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EdB-NN-hF0"/>
+                        <viewControllerLayoutGuide type="bottom" id="uUi-pt-R4x"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rVT-k6-yAA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="page-view-controller-1-lvl1tint" translatesAutoresizingMaskIntoConstraints="NO" id="0OB-IU-gDp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="backDropImage" destination="0OB-IU-gDp" id="GgG-ga-Hg0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dTw-ZH-JKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1543.2" y="142.57871064467767"/>
+        </scene>
+        <!--Done Intro View Controller-->
+        <scene sceneID="5Rf-hL-A98">
+            <objects>
+                <viewController storyboardIdentifier="DoneIntroViewController" id="h9M-KS-ob5" customClass="DoneIntroViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bfF-gD-Bg3"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ksh-DX-sIj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v66-g8-Zdq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gez-jf-Qtk">
+                                <rect key="frame" x="169" y="318" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="h9M-KS-ob5" eventType="touchUpInside" id="Edf-yf-XGQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TpY-82-on3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-743" y="143"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -117,7 +180,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="info"/>
                                 <connections>
-                                    <segue destination="zUA-pm-bgF" kind="show" id="phY-Kp-eLF"/>
+                                    <segue destination="C2p-2X-0v8" kind="show" id="zOL-Ar-2Oa"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A19-4X-GLT">
@@ -146,12 +209,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173.59999999999999" y="142.57871064467767"/>
+            <point key="canvasLocation" x="156" y="143"/>
         </scene>
         <!--Info Page View Controller-->
         <scene sceneID="nnB-Ia-jkC">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="zUA-pm-bgF" customClass="InfoPageViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="InfoPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="zUA-pm-bgF" customClass="InfoPageViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qo4-Ck-Fie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1034" y="143"/>
@@ -159,7 +222,7 @@
         <!--Second Info View Controller-->
         <scene sceneID="HYw-bN-Xer">
             <objects>
-                <viewController storyboardIdentifier="SecondInfoViewController" id="cpO-NZ-3z7" customClass="SecondInfoViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cpO-NZ-3z7" customClass="SecondInfoViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gec-1S-2MO"/>
                         <viewControllerLayoutGuide type="bottom" id="XSN-5s-A1s"/>
@@ -167,17 +230,22 @@
                     <view key="view" contentMode="scaleToFill" id="0zt-ht-B4Q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="womanback" translatesAutoresizingMaskIntoConstraints="NO" id="PPE-y4-s4a">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IaK-Lx-QPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2097" y="304"/>
+            <point key="canvasLocation" x="2521" y="143"/>
         </scene>
         <!--Third Info View Controller-->
         <scene sceneID="JIo-pO-cYu">
             <objects>
-                <viewController storyboardIdentifier="ThirdInfoViewController" id="55S-X2-LnP" customClass="ThirdInfoViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ThirdInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="55S-X2-LnP" customClass="ThirdInfoViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ogy-uS-14F"/>
                         <viewControllerLayoutGuide type="bottom" id="g99-bC-BVU"/>
@@ -185,17 +253,70 @@
                     <view key="view" contentMode="scaleToFill" id="aaO-UN-lSY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.78117674589999997" green="0.1693761647" blue="0.071573548020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="abs" translatesAutoresizingMaskIntoConstraints="NO" id="NFU-Es-NN8">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4AW-4q-hRt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2097" y="987"/>
+            <point key="canvasLocation" x="3238" y="143"/>
+        </scene>
+        <!--Fourth Info View Controller-->
+        <scene sceneID="poL-wL-dRY">
+            <objects>
+                <viewController storyboardIdentifier="FourthInfoViewController" id="oTq-lF-b6W" customClass="FourthInfoViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rHu-bR-guj"/>
+                        <viewControllerLayoutGuide type="bottom" id="rxh-ZG-M84"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="i5T-SZ-1CX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="measurements" translatesAutoresizingMaskIntoConstraints="NO" id="x9O-Ko-7Jy">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p6z-2A-uPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3976.8000000000002" y="142.57871064467767"/>
+        </scene>
+        <!--Fifth Info View Controller-->
+        <scene sceneID="HEo-S7-ZGk">
+            <objects>
+                <viewController storyboardIdentifier="FifthInfoViewController" id="FkC-mb-0Nq" customClass="FifthInfoViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="h6l-AO-58H"/>
+                        <viewControllerLayoutGuide type="bottom" id="RWS-VP-oK6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ByV-yq-bQE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="biceps" translatesAutoresizingMaskIntoConstraints="NO" id="j7I-hu-7Z9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I0J-m0-AAR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4749.6000000000004" y="142.57871064467767"/>
         </scene>
         <!--First Info View Controller-->
         <scene sceneID="t95-60-AE1">
             <objects>
-                <viewController storyboardIdentifier="FirstInfoViewController" id="NzP-wl-WKx" customClass="FirstInfoViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstInfoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NzP-wl-WKx" customClass="FirstInfoViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DR5-US-wco"/>
                         <viewControllerLayoutGuide type="bottom" id="Ah1-ua-D3U"/>
@@ -203,12 +324,17 @@
                     <view key="view" contentMode="scaleToFill" id="oKe-5p-mUO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="chest" translatesAutoresizingMaskIntoConstraints="NO" id="rQD-Pa-FK2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Db-3J-qfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2098" y="-369"/>
+            <point key="canvasLocation" x="1809" y="143"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="yep-ky-EQo">
@@ -457,13 +583,19 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ObC-oy-E5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173.59999999999999" y="933.28335832083962"/>
+            <point key="canvasLocation" x="174" y="872"/>
         </scene>
     </scenes>
     <resources>
+        <image name="abs" width="375" height="667"/>
+        <image name="biceps" width="375" height="668"/>
+        <image name="chest" width="375" height="668"/>
         <image name="goback" width="225" height="225"/>
         <image name="info" width="156" height="156"/>
+        <image name="measurements" width="375" height="667"/>
         <image name="notification-on" width="156" height="156"/>
+        <image name="page-view-controller-1-lvl1tint" width="375" height="667"/>
         <image name="schedule" width="156" height="156"/>
+        <image name="womanback" width="375" height="667"/>
     </resources>
 </document>
