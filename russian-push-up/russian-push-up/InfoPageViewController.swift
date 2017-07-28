@@ -8,22 +8,20 @@
 
 import UIKit
 
-class InfoPageViewController: UIPageViewController {
+class InfoPageViewController: UIPageViewController, UIPageViewControllerDataSource {
     
-    //var that can store result of functions
-   // private(set) lazy var viewControllers : [UIViewController] = {
-     //   return [
-       //     self.myViewControllersFunc(_identifier: "FirstInfoViewController"),
-         //   self.myViewControllersFunc(_identifier: "SecondInfoViewController"),
-           // self.myViewControllersFunc(_identifier: "ThirdInfoViewController")
-        //]
-    //}()
-    
-
-
-    private func myViewControllersFunc(_identifier : String) -> UIViewController {
+    private(set) lazy var orderedViewControllers : [UIViewController] = {
+       
+        return [self.myViewControllersFunc(identifier: "FirstInfoViewController"),
+                self.myViewControllersFunc(identifier: "SecondViewController"),
+                self.myViewControllersFunc(identifier: "ThirdViewController")]
         
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: _identifier)
+    }()
+
+
+    private func myViewControllersFunc(identifier : String) -> UIViewController {
+        
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
         
     }
     
@@ -32,9 +30,55 @@ class InfoPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       // self.dataSource = self
+        self.dataSource = self
+        
+        if let firstVC = orderedViewControllers.first {
+            
+            setViewControllers([firstVC],
+                               direction: .forward,
+                               animated: true,
+                               completion: nil)
+            
+        }
 
         // Do any additional setup after loading the view.
     }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+            return nil
+        }
+        let previousIndex = viewControllerIndex - 1
+        guard previousIndex >= 0 else {
+            return nil
+        }
+        guard orderedViewControllers.count > previousIndex else {
+            return nil
+        }
+        return orderedViewControllers[previousIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    
+        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+            return nil
+        }
+        
+        let nextIndex = viewControllerIndex + 1
+        let orderedViewControllersCount = orderedViewControllers.count
+        
+        guard orderedViewControllersCount != nextIndex else {
+            return nil
+        }
+        
+        guard orderedViewControllersCount > nextIndex else {
+            return nil
+        }
+        
+        return orderedViewControllers[nextIndex]
+        
+    }
+    
+    
 
 }
