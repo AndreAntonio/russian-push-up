@@ -10,75 +10,106 @@ import UIKit
 
 class InfoPageViewController: UIPageViewController, UIPageViewControllerDataSource {
     
-    private(set) lazy var orderedViewControllers : [UIViewController] = {
-       
-        return [self.myViewControllersFunc(identifier: "FirstInfoViewController"),
-                self.myViewControllersFunc(identifier: "SecondViewController"),
-                self.myViewControllersFunc(identifier: "ThirdViewController")]
+    private(set)lazy var orderedViewControllers : [UIViewController] = {
+        
+        return [
+            self.newVc(viewController: "FirstInfoViewController"),
+            self.newVc(viewController: "SecondInfoViewController"),
+            self.newVc(viewController: "ThirdInfoViewController"),
+            self.newVc(viewController: "FourthInfoViewController"),
+            self.newVc(viewController: "FifthInfoViewController")
+        ]
         
     }()
-
-
-    private func myViewControllersFunc(identifier : String) -> UIViewController {
-        
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InfoPageViewController")
-        
-    }
     
     
-    //first loaded func
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.dataSource = self
         
-        if let firstVC = orderedViewControllers.first {
+        if let initial = orderedViewControllers.first {
             
-            setViewControllers([firstVC],
-                               direction: .forward,
-                               animated: true,
-                               completion: nil)
+            self.setViewControllers([initial], direction: .forward, animated: true, completion: nil)
             
         }
-
-        // Do any additional setup after loading the view.
+        
+        
+        //if let firstViewController = orderedViewControllers.first {
+        //  setViewControllers([firstViewController],
+        //                   direction: .forward,
+        //                 animated: true,
+        //               completion: nil)
+        //}
     }
     
+    // Do any additional setup after loading the view.
+    
+    func newVc(viewController: String) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewController)
+    }
+    
+    //returns previous view controller from current shown view controller
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+        
+        //get index of current view controller
+        
+        guard let index = orderedViewControllers.index(of: viewController) else {
             return nil
         }
-        let previousIndex = viewControllerIndex - 1
-        guard previousIndex >= 0 else {
+        
+        //get index of previous view controller
+        
+        let previous = index-1
+        
+        guard previous >= 0 else {
+            
             return nil
+            //return orderedViewControllers.last
+            
         }
-        guard orderedViewControllers.count > previousIndex else {
+        
+        guard orderedViewControllers.count > previous else {
+            
             return nil
+            
         }
-        return orderedViewControllers[previousIndex]
+        
+        return orderedViewControllers[previous]
+        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-    
-        guard let viewControllerIndex = orderedViewControllers.index(of: viewController) else {
+        
+        //get index of current view controller
+        
+        guard let index = orderedViewControllers.index(of: viewController) else {
+            
             return nil
+            
         }
         
-        let nextIndex = viewControllerIndex + 1
-        let orderedViewControllersCount = orderedViewControllers.count
+        //get index of next vc
         
-        guard orderedViewControllersCount != nextIndex else {
+        let next = index + 1
+        
+        guard orderedViewControllers.count != next else {
+            
             return nil
+            //return orderedViewControllers.first
+            
         }
         
-        guard orderedViewControllersCount > nextIndex else {
+        guard orderedViewControllers.count > next else {
+            
             return nil
+            
         }
         
-        return orderedViewControllers[nextIndex]
+        return orderedViewControllers[next]
         
     }
     
     
-
+    
 }
