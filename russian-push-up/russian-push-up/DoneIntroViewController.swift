@@ -15,28 +15,24 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     //This variable is currently storing the value from the picker view. We gotta see how to store this value and work with it.
     var selected : String = ""
-   
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //creating pickerview
         maxPickerView = UIPickerView()
         maxPickerView.frame = CGRect(x: 0, y: 250, width: self.view.bounds.width, height: 200)
-        
         maxPickerView.showsSelectionIndicator = true
-        
         self.view.addSubview(maxPickerView)
-        
         maxPickerView.delegate = self
         maxPickerView.dataSource = self
         
         for i in 1...100 {
             numbers.append("\(i)")
         }
-
-        }
-
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -53,7 +49,7 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     //func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-      //  return numbers[row]
+    //  return numbers[row]
     //}
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -62,13 +58,12 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     //called when did select some row
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-      //  label.text = numbers[row]
+        //  label.text = numbers[row]
         selected = numbers[row]
         print(selected)
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        
         let strTitle = numbers[row]
         let attString = NSAttributedString(string: strTitle, attributes: [NSForegroundColorAttributeName : UIColor.white])
         return attString
@@ -86,11 +81,9 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
         let defaults = UserDefaults.standard
         defaults.setValue(true, forKey: "skipIntroPages")
         defaults.synchronize()
-            
-        var nextView : ViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        
+        let nextView : ViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
         appdelegate.window!.rootViewController = nextView
-        
     }
-
 }

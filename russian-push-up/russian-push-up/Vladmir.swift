@@ -12,14 +12,12 @@ import UIKit
 import UserNotifications
 
 public class Vladmir {
+    let sharedInstance = Vladmir()
     
     var managedContext: NSManagedObjectContext? = nil
-    
     var day: Int = 0
     var startDate: Date
-    
     var max: Int = 0
-    
     let program: [(Double, Int)] = [(0.30, 60),
                                     (0.50, 60),
                                     (0.60, 45),
@@ -27,7 +25,6 @@ public class Vladmir {
                                     (0.45, 30),
                                     (0.40, 60),
                                     (0.20, 90),
-                                    
                                     (0.35, 45),
                                     (0.55, 20),
                                     (0.30, 15),
@@ -35,8 +32,6 @@ public class Vladmir {
                                     (0.35, 45),
                                     (0.45, 20),
                                     (0.25, 120)]
-    
-    var totalAmount: Int = 0
     
     private init() {
         self.startDate = Date()
