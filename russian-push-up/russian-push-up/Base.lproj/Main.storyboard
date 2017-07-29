@@ -320,14 +320,14 @@ Push Up Program is a 	2 week-long fitness  program known to  improve chest &
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="currentMaximumLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bz7-pQ-M8a">
-                                <rect key="frame" x="16" y="166" width="278" height="34"/>
+                                <rect key="frame" x="16" y="164" width="278" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="relativeIntensityLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0Z-Yq-F2k">
-                                <rect key="frame" x="16" y="208" width="262" height="34"/>
+                                <rect key="frame" x="16" y="207" width="262" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -400,6 +400,7 @@ Push Up Program is a 	2 week-long fitness  program known to  improve chest &
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="schedule"/>
                                 <connections>
+                                    <action selector="goToScheduleTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NV5-c6-bbW"/>
                                     <segue destination="IxT-Os-4rc" kind="show" id="3lz-cm-ZtL"/>
                                 </connections>
                             </button>
@@ -408,6 +409,7 @@ Push Up Program is a 	2 week-long fitness  program known to  improve chest &
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="info"/>
                                 <connections>
+                                    <action selector="goToInfoTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4Fg-gM-0sp"/>
                                     <segue destination="zUA-pm-bgF" kind="show" id="FZi-yw-ahG"/>
                                 </connections>
                             </button>
@@ -434,6 +436,16 @@ Push Up Program is a 	2 week-long fitness  program known to  improve chest &
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="MinOutlet" destination="c9l-Qx-DuT" id="5qj-C3-vgv"/>
+                        <outlet property="SecOutlet" destination="pCZ-FH-Cgy" id="v8J-p6-fg2"/>
+                        <outlet property="currentMaximumOutlet" destination="bz7-pQ-M8a" id="Xry-N2-nSQ"/>
+                        <outlet property="dayOutlet" destination="k0A-WJ-CQb" id="K9q-GK-cVT"/>
+                        <outlet property="psOutlet" destination="RPf-XR-Vh3" id="VxK-Ua-46a"/>
+                        <outlet property="relativeIntensityOutlet" destination="Y0Z-Yq-F2k" id="6Dt-Mj-rii"/>
+                        <outlet property="weekDayOutlet" destination="WJq-qX-Tas" id="uv2-Yf-g00"/>
+                        <outlet property="weekOutlet" destination="Jh1-7N-BIj" id="WWW-X9-2Qe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -466,7 +478,7 @@ Push Up Program is a 	2 week-long fitness  program known to  improve chest &
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEb-Rw-Vbv">
                                 <rect key="frame" x="21" y="0.0" width="332" height="545"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">If you managed to to pull off 40 push-ups on your first test, then you have to perform 20 on the day that demands an 50% relative intensity. Tests are performed every monday.  You should not attempt to go for your limits more than once a week, as High Repetition sets to exhaustion can be dangerous.</mutableString>
+                                <string key="text">If you managed to to pull off 40 push-ups on your first test, then you have to perform 20 on the day that demands an 50% relative intensity. Tests are performed every monday.  You should not attempt to go for your limits more than once a week, as High Repetition sets to exhaustion can be dangerous.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -614,10 +626,10 @@ Push Up Program is a 	2 week-long fitness  program known to  improve chest &
             </objects>
             <point key="canvasLocation" x="1808.8" y="142.57871064467767"/>
         </scene>
-        <!--View Controller-->
+        <!--Schedule View Controller-->
         <scene sceneID="yep-ky-EQo">
             <objects>
-                <viewController id="IxT-Os-4rc" customClass="ViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IxT-Os-4rc" customClass="ScheduleViewController" customModule="russian_push_up" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OKj-yv-zEG"/>
                         <viewControllerLayoutGuide type="bottom" id="yJK-eO-sH3"/>
@@ -754,6 +766,7 @@ Push Up Program is a 	2 week-long fitness  program known to  improve chest &
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="goback"/>
                                 <connections>
+                                    <action selector="goBackTapped:" destination="IxT-Os-4rc" eventType="touchUpInside" id="oXJ-ux-ZX3"/>
                                     <segue destination="BYZ-38-t0r" kind="show" id="Ez5-Qb-YMx"/>
                                 </connections>
                             </button>

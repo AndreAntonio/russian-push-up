@@ -22,6 +22,7 @@
 		19BB7F511F2BB886001CBF2A /* DoneIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB7F501F2BB886001CBF2A /* DoneIntroViewController.swift */; };
 		19BB7F531F2BBBC7001CBF2A /* FirstIntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB7F521F2BBBC7001CBF2A /* FirstIntroViewController.swift */; };
 		19BB7F551F2BD8F7001CBF2A /* IntroPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB7F541F2BD8F7001CBF2A /* IntroPageViewController.swift */; };
+		19BB7F7C1F2D49AC001CBF2A /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BB7F7B1F2D49AC001CBF2A /* ScheduleViewController.swift */; };
 		5956BCFB1F140CF700963461 /* Vladmir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5956BCFA1F140CF700963461 /* Vladmir.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		19BB7F501F2BB886001CBF2A /* DoneIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoneIntroViewController.swift; sourceTree = "<group>"; };
 		19BB7F521F2BBBC7001CBF2A /* FirstIntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstIntroViewController.swift; sourceTree = "<group>"; };
 		19BB7F541F2BD8F7001CBF2A /* IntroPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroPageViewController.swift; sourceTree = "<group>"; };
+		19BB7F7B1F2D49AC001CBF2A /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		5956BCFA1F140CF700963461 /* Vladmir.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vladmir.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +78,7 @@
 		19AD94391F132DC10039E179 /* russian-push-up */ = {
 			isa = PBXGroup;
 			children = (
+				19BB7F7B1F2D49AC001CBF2A /* ScheduleViewController.swift */,
 				19AD943A1F132DC10039E179 /* AppDelegate.swift */,
 				19AD943C1F132DC10039E179 /* ViewController.swift */,
 				19BB7F441F2AE5EB001CBF2A /* InfoPageViewController.swift */,
@@ -175,6 +178,7 @@
 				19BB7F4F1F2BB33D001CBF2A /* FifthInfoViewController.swift in Sources */,
 				19BB7F551F2BD8F7001CBF2A /* IntroPageViewController.swift in Sources */,
 				19BB7F4D1F2BB32A001CBF2A /* FourthInfoViewController.swift in Sources */,
+				19BB7F7C1F2D49AC001CBF2A /* ScheduleViewController.swift in Sources */,
 				19BB7F531F2BBBC7001CBF2A /* FirstIntroViewController.swift in Sources */,
 				19AD94431F132DC10039E179 /* russian_push_up.xcdatamodeld in Sources */,
 				19BB7F451F2AE5EB001CBF2A /* InfoPageViewController.swift in Sources */,
