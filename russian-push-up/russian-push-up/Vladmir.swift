@@ -12,6 +12,7 @@ import UIKit
 import UserNotifications
 
 public class Vladmir {
+    
     var managedContext: NSManagedObjectContext? = nil
     
     var day: Int = 0
