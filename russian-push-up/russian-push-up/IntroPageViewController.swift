@@ -16,7 +16,9 @@ class IntroPageViewController: UIPageViewController, UIPageViewControllerDataSou
             self.newVc(viewController: "FirstIntroViewController"),
             self.newVc(viewController: "SecondIntroViewController"),
             self.newVc(viewController: "ThirdIntroViewController"),
-            self.newVc(viewController: "DoneIntroViewController")
+            self.newVc(viewController: "FourthIntroViewController")
+            //self.newVc(viewController: "FifthIntroViewController"),
+            //self.newVc(viewController: "DoneIntroViewController")
             ]
                 
     }()

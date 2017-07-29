@@ -25,6 +25,10 @@ class DoneIntroViewController: UIViewController {
     
         @IBAction func doneButtonTapped(_ sender: Any) {
     
+        let defaults = UserDefaults.standard
+        defaults.setValue(true, forKey: "skipIntroPages")
+        defaults.synchronize()
+            
         var nextView : ViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
         appdelegate.window!.rootViewController = nextView

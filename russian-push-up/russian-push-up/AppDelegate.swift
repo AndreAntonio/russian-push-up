@@ -17,10 +17,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        UIPageControl.appearance().pageIndicatorTintColor = UIColor.lightGray
-        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.white
+        let defaults = UserDefaults.standard
+        let skipIntroPages = defaults.bool(forKey: "skipIntroPages")
         
-        
+        if skipIntroPages {
+            
+            let mainStoryBoard: UIStoryboard = UIStoryboard(name:"Main", bundle:nil)
+            
+          var nextView : ViewController = mainStoryBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            
+            window?.rootViewController = nextView
+            
+        } else {
+            
+            
+        }
+    
         return true
     }
 
