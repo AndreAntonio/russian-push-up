@@ -70,14 +70,13 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     //func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-      //  let backview = UIView()
-       // backview.backgroundColor = .white
-       // return backview
-        
+    //  let backview = UIView()
+    // backview.backgroundColor = .white
+    // return backview
+    
     //}
     
-        @IBAction func doneButtonTapped(_ sender: Any) {
-    
+    @IBAction func doneButtonTapped(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.setValue(true, forKey: "skipIntroPages")
         defaults.synchronize()
