@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
+    var timer = Timer()
+    var timeRemaining: Int = 0
     
     // Esse outlet é responsavel por apresentar ao usuario a semana do programa em que ele atualmente se encontra.
     @IBOutlet weak var weekOutlet: UILabel!
@@ -34,8 +37,44 @@ class ViewController: UIViewController {
     // Esse Outlet representa a casa dos segundos do outlet acima.
     @IBOutlet weak var SecOutlet: UILabel!
     
+    override func viewWillAppear(_ animated: Bool) {
+        //Vladmir.sharedInstance.
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let vlad = Vladmir.sharedInstance
+        let day = vlad.day
+        self.dayOutlet.text = "day number \(day + 1)"
+        
+        if day + 1 > 7 {
+            self.weekDayOutlet.text = "2nd Week"
+        } else {
+            self.weekDayOutlet.text = "1st Week"
+        }
+        
+        self.currentMaximumOutlet.text = "\(vlad.max)"
+        self.relativeIntensityOutlet.text = "\(Int(vlad.program[day].0 * Double(100)))%"
+        self.psOutlet.text = "\(Int(vlad.program[day].0 * Double(vlad.max)))"
+        
+        switch Calendar(identifier: .gregorian).component(.weekday, from: Date()) {
+        case 0:
+            self.weekDayOutlet.text = "Sunday"
+        case 1:
+            self.weekDayOutlet.text = "Monday"
+        case 2:
+            self.weekDayOutlet.text = "Tuesday"
+        case 3:
+            self.weekDayOutlet.text = "Wednesday"
+        case 4:
+            self.weekDayOutlet.text = "Thursday"
+        case 5:
+            self.weekDayOutlet.text = "Friday"
+        default:
+            self.weekDayOutlet.text = "Saturday"
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -56,7 +95,29 @@ class ViewController: UIViewController {
         
     }
     
+    func manageTimer() {
+        var nextDate = Date()
+        UNUserNotificationCenter.current().getPendingNotificationRequests { (request) in
+            nextDate = (request[0].trigger as! UNTimeIntervalNotificationTrigger).nextTriggerDate()!
+        }
+        
+        self.timeRemaining += (nextDate.interval(ofComponent: .minute, fromDate: Date())*60)
+        self.timeRemaining += nextDate.interval(ofComponent: .second, fromDate: Date())
+        self.displayTime()
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(handleTimer), userInfo: nil, repeats: true)
+    }
     
-
-
+    func handleTimer() {
+        self.timeRemaining -= 1
+        self.displayTime()
+    }
+    
+    func displayTime() {
+        let minutes = Int(self.timeRemaining / 60)
+        let seconds = self.timeRemaining % 60
+        
+        self.MinOutlet.text = "\(minutes)"
+        self.SecOutlet.text = "\(seconds)"
+    }
 }
