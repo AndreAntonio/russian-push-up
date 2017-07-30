@@ -12,12 +12,14 @@ import UIKit
 import UserNotifications
 
 public class Vladmir {
-    let sharedInstance = Vladmir()
+    static var sharedInstance = Vladmir()
     
     var managedContext: NSManagedObjectContext? = nil
     var day: Int = 0
     var startDate: Date
     var max: Int = 0
+    var lastTest: Date
+    
     let program: [(Double, Int)] = [(0.30, 60),
                                     (0.50, 60),
                                     (0.60, 45),
@@ -33,8 +35,22 @@ public class Vladmir {
                                     (0.45, 20),
                                     (0.25, 120)]
     
+    var needToTestAgain: Bool {
+        if lastTest == Date() {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     private init() {
         self.startDate = Date()
+        self.lastTest = Date()
+        
+        getSavedData()
+    }
+    
+    func getSavedData() {
         var temp: [NSManagedObject] = []
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -52,15 +68,14 @@ public class Vladmir {
         if temp.count > 0 {
             self.startDate = temp[temp.count - 1].value(forKey: "startDate") as! Date
             self.max = temp[temp.count - 1].value(forKey: "max") as! Int
-            
-            //temp[temp.count - 1]
+            self.lastTest = temp[temp.count - 1].value(forKey: "lastTest") as! Date
             
             self.day = self.startDate.interval(ofComponent: .day, fromDate: Date())
         }
     }
     
     public func setMax(to max: Int) {
-        self.startDate = Date()
+        self.lastTest = Date()
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -71,11 +86,12 @@ public class Vladmir {
         
         // 2
         let entity = NSEntityDescription.entity(forEntityName: "Entity", in: managedContext)!
-        let saveDate = NSManagedObject(entity: entity, insertInto: managedContext)
+        let saveData = NSManagedObject(entity: entity, insertInto: managedContext)
         
         // 3
-        saveDate.setValue(Date(), forKeyPath: "startDate")
-        saveDate.setValue(max, forKeyPath: "max")
+        saveData.setValue(self.startDate, forKeyPath: "startDate")
+        saveData.setValue(max, forKeyPath: "max")
+        saveData.setValue(Date(), forKey: "lastTest")
         
         // 4
         do {
@@ -103,7 +119,7 @@ public class Vladmir {
         self.setNotification(title: "TITLE", subtitle: "Subtitle", body: "Body", badge: 1, withIdentifier: "REMINDER", notificationTrigger: UNCalendarNotificationTrigger(dateMatching: components, repeats: false))
     }
     
-    func setNotification(title: String, subtitle: String, body: String, badge: Int, withIdentifier identifier: String, notificationTrigger trigger: UNNotificationTrigger) {
+    private func setNotification(title: String, subtitle: String, body: String, badge: Int, withIdentifier identifier: String, notificationTrigger trigger: UNNotificationTrigger) {
         let content = UNMutableNotificationContent()
         content.title = title
         content.subtitle = subtitle
@@ -137,9 +153,7 @@ public class Vladmir {
 }
 
 extension Date {
-    
     func interval(ofComponent comp: Calendar.Component, fromDate date: Date) -> Int {
-        
         let currentCalendar = Calendar.current
         
         guard let start = currentCalendar.ordinality(of: comp, in: .era, for: date) else { return 0 }
