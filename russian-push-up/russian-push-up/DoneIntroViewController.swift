@@ -11,9 +11,12 @@ import UIKit
 class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var maxPickerView: UIPickerView!
+    
+    // O vetor tem esse nome pq ele tem numeros, mas ele é um vetor de Strings. O método do delegate do Picker View retorna apenas Strings, por isso fiz isso. De qualquer forma, a variavel que pega o valor do picker é a "selected".
     var numbers = [String]()
     
-    //This variable is currently storing the value from the picker view. We gotta see how to store this value and work with it.
+    //This variable is currently storing the value from the picker view. We gotta see how to store this value and work with it. 
+    //Alem disso, ela é uma String. Na linha 84 eu crio uma variavel nova fazendo um cast dessa.
     var selected : String = ""
     
     
@@ -59,10 +62,11 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
     //called when did select some row
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //  label.text = numbers[row]
-        selected = numbers[row]
+        self.selected = numbers[row]
         print(selected)
     }
     
+    // Esse metodo aqui é o infeliz que só retorna String.
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let strTitle = numbers[row]
         let attString = NSAttributedString(string: strTitle, attributes: [NSForegroundColorAttributeName : UIColor.white])
@@ -77,6 +81,12 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
     //}
     
     @IBAction func doneButtonTapped(_ sender: Any) {
+        
+        //variavel nova sendo feito um cast da variavel global.
+        var selectedNumber = Int(selected)
+        
+        Vladmir.sharedInstance.setMax(to: selectedNumber!)
+        
         let defaults = UserDefaults.standard
         defaults.setValue(true, forKey: "skipIntroPages")
         defaults.synchronize()
@@ -84,5 +94,8 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
         let nextView : ViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
         appdelegate.window!.rootViewController = nextView
+        
+        
+        
     }
 }
