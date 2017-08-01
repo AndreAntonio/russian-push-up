@@ -132,8 +132,13 @@
 				TargetAttributes = {
 					19AD94361F132DC10039E179 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = CVX58B2KAX;
+						DevelopmentTeam = 524D3B9S8F;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -309,7 +314,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CVX58B2KAX;
+				DEVELOPMENT_TEAM = 524D3B9S8F;
 				INFOPLIST_FILE = "russian-push-up/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.br.faruolo.andre.russian-push-up";
@@ -322,7 +327,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = CVX58B2KAX;
+				DEVELOPMENT_TEAM = 524D3B9S8F;
 				INFOPLIST_FILE = "russian-push-up/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.br.faruolo.andre.russian-push-up";

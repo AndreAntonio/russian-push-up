@@ -20,7 +20,7 @@ public class Vladmir {
     var max: Int = 0
     var lastTest: Date
     
-    let program: [(Double, Int)] = [(0.30, 1),
+    let program: [(Double, Int)] = [(0.30, 5),
                                     (0.50, 60),
                                     (0.60, 45),
                                     (0.25, 60),
@@ -102,8 +102,21 @@ public class Vladmir {
     }
     
     public func scheduleNextNotification() {
-        //TODO: schedule the reminders for the Day
-        self.setNotification(title: "TITLE", subtitle: "Time to do \(Int(self.program[day].0 * Double(self.max))) push ups", body: "BODY", badge: 1, withIdentifier: "NOTIFICATION", notificationTrigger: UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(self.program[day].1 * 60), repeats: true))
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+//        let temp = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(self.program[day].1 * 60), repeats: true)
+        
+        let calendar = Calendar.current
+        let now = Date()
+        var control: Int = 0 //minutes
+        
+        while control <= 30 {
+            control += self.program[day].1
+            let tempDate = calendar.date(byAdding: .minute, value: control, to: now)
+            let components = calendar.dateComponents([.day, .hour, .minute, .second], from: tempDate!)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+            self.setNotification(title: "TITLE", subtitle: "Time to do \(Int(self.program[day].0 * Double(self.max))) push ups", body: "BODY", badge: 1, withIdentifier: "Notification\(control)", notificationTrigger: trigger)
+        }
     }
     
     public func scheduleBreack() {
@@ -126,20 +139,11 @@ public class Vladmir {
         content.body = body
         content.badge = badge as NSNumber
         
-        //        let repeatAction = UNNotificationAction(identifier:"repeat", title:"Repeat",options: [])
-        
-        //        let changeAction = UNTextInputNotificationAction(identifier: "change", title: "Change Message", options: [])
-        
-        let category = UNNotificationCategory(identifier: "actionCategory", actions: [] /*[repeatAction, changeAction]*/, intentIdentifiers: [], options: [])
+        let category = UNNotificationCategory(identifier: "actionCategory", actions: [], intentIdentifiers: [], options: [])
         
         content.categoryIdentifier = "actionCategory"
         
         UNUserNotificationCenter.current().setNotificationCategories([category])
-        
-        //        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        //let triggerDate = trigger
-        
-        //let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         
         let requestIdentifier = identifier
         let request = UNNotificationRequest(identifier: requestIdentifier, content: content, trigger: trigger)
@@ -156,8 +160,8 @@ extension Date {
     func interval(ofComponent comp: Calendar.Component, fromDate date: Date) -> Int {
         let currentCalendar = Calendar.current
         
-        guard let start = currentCalendar.ordinality(of: comp, in: .era, for: date) else { return 0 }
-        guard let end = currentCalendar.ordinality(of: comp, in: .era, for: self) else { return 0 }
+        guard let end = currentCalendar.ordinality(of: comp, in: .era, for: date) else { return 0 }
+        guard let start = currentCalendar.ordinality(of: comp, in: .era, for: self) else { return 0 }
         
         return end - start
     }
