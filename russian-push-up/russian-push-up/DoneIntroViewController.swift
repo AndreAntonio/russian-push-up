@@ -66,6 +66,8 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
         print(selected)
     }
     
+    
+    
     // Esse metodo aqui é o infeliz que só retorna String.
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let strTitle = numbers[row]
@@ -83,9 +85,9 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBAction func doneButtonTapped(_ sender: Any) {
         
         //variavel nova sendo feito um cast da variavel global.
-        var selectedNumber = Int(selected)
-        
-        Vladmir.sharedInstance.setMax(to: selectedNumber!)
+        var selectedNumber = maxPickerView.selectedRow(inComponent: 0) + 1
+        Vladmir.sharedInstance.setMax(to: selectedNumber)
+        print(selectedNumber)
         
         let defaults = UserDefaults.standard
         defaults.setValue(true, forKey: "skipIntroPages")

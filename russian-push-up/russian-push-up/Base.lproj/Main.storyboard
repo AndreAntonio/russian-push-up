@@ -428,6 +428,9 @@ Push Up Program is a 	2 week-long fitness  program known to  improve chest &
                                         <rect key="frame" x="315" y="34" width="52" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" backgroundImage="notification-on"/>
+                                        <connections>
+                                            <action selector="notificationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eou-jQ-81c"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.78117674589157104" green="0.16937616467475891" blue="0.071573548018932343" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -649,11 +652,6 @@ Push Up Program is a 	2 week-long fitness  program known to  improve chest &
                                         <color key="textColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHg-r8-fpw">
-                                        <rect key="frame" x="315" y="34" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" backgroundImage="notification-on"/>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.78117674589999997" green="0.1693761647" blue="0.071573548020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>

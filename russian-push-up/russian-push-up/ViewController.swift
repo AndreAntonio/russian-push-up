@@ -12,6 +12,7 @@ import UserNotifications
 class ViewController: UIViewController {
     var timer = Timer()
     var timeRemaining: Int = 0
+    var areNotificationsOn : Bool = true
     
     // Esse outlet é responsavel por apresentar ao usuario a semana do programa em que ele atualmente se encontra.
     @IBOutlet weak var weekOutlet: UILabel!
@@ -38,7 +39,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var SecOutlet: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
-        //Vladmir.sharedInstance.
+        
+        let defaults = UserDefaults.standard
+        areNotificationsOn = defaults.bool(forKey: "areNotificationsOn")
+        handleNotifications()
+        
     }
     
     override func viewDidLoad() {
@@ -120,4 +125,34 @@ class ViewController: UIViewController {
         self.MinOutlet.text = "\(minutes)"
         self.SecOutlet.text = "\(seconds)"
     }
+    
+    func handleNotifications() {
+        
+        if self.areNotificationsOn {
+            
+            Vladmir.sharedInstance.scheduleNextNotification()
+            //todo mudar imagem do botão
+            
+        }else{
+            
+            Vladmir.sharedInstance.scheduleBreack()
+            //todo mudar imagem do botão
+            
+        }
+        
+    }
+    
+    @IBAction func notificationTapped(_ sender: Any) {
+        
+        self.areNotificationsOn = !self.areNotificationsOn
+        handleNotifications()
+        
+        let defaults = UserDefaults.standard
+        defaults.setValue(true, forKey: "areNotificationsOn")
+        defaults.synchronize()
+        
+        print(areNotificationsOn)
+        
+    }
+    
 }
