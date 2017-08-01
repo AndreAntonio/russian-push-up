@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -97,7 +98,15 @@ class DoneIntroViewController: UIViewController, UIPickerViewDataSource, UIPicke
         let appdelegate = UIApplication.shared.delegate as! AppDelegate
         appdelegate.window!.rootViewController = nextView
         
-        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .alert, .sound]) { (permited, error) in
+            if permited {
+                //TODO perform segue
+                print("notifications permited")
+            } else {
+                //TODO complain with the idiot user
+                print("notifications denies")
+            }
+        }
         
     }
 }

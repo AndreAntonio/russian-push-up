@@ -38,20 +38,16 @@ class ViewController: UIViewController {
     // Esse Outlet representa a casa dos segundos do outlet acima.
     @IBOutlet weak var SecOutlet: UILabel!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         let defaults = UserDefaults.standard
         areNotificationsOn = defaults.bool(forKey: "areNotificationsOn")
         handleNotifications()
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
         let vlad = Vladmir.sharedInstance
         let day = vlad.day
-        self.dayOutlet.text = "day number \(day + 1)"
+        self.dayOutlet.text = "day \(day + 1)"
         
         if day + 1 > 7 {
             self.weekDayOutlet.text = "2nd Week"
@@ -80,9 +76,11 @@ class ViewController: UIViewController {
             self.weekDayOutlet.text = "Saturday"
         }
         
+        self.manageTimer()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -102,19 +100,30 @@ class ViewController: UIViewController {
     
     func manageTimer() {
         var nextDate = Date()
-        UNUserNotificationCenter.current().getPendingNotificationRequests { (request) in
-            nextDate = (request[0].trigger as! UNTimeIntervalNotificationTrigger).nextTriggerDate()!
+        
+        self.timeRemaining = 0
+        if self.areNotificationsOn {
+            UNUserNotificationCenter.current().getPendingNotificationRequests { (request) in
+                print(request.count)
+                nextDate = (request[0].trigger as! UNCalendarNotificationTrigger).nextTriggerDate()!
+                print(nextDate)
+                
+                let diff = Calendar.current.dateComponents([.minute, .second], from: Date(), to: nextDate)
+                
+                self.timeRemaining = ((diff.minute ?? 0)*60)
+                self.timeRemaining += diff.second ?? 0
+            }
+            
+            self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.handleTimer), userInfo: nil, repeats: true)
         }
-        
-        self.timeRemaining += (nextDate.interval(ofComponent: .minute, fromDate: Date())*60)
-        self.timeRemaining += nextDate.interval(ofComponent: .second, fromDate: Date())
-        self.displayTime()
-        
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(handleTimer), userInfo: nil, repeats: true)
     }
     
     func handleTimer() {
         self.timeRemaining -= 1
+        if self.timeRemaining <= 0 {
+            self.timer.invalidate()
+            self.manageTimer()
+        }
         self.displayTime()
     }
     
@@ -127,19 +136,14 @@ class ViewController: UIViewController {
     }
     
     func handleNotifications() {
-        
         if self.areNotificationsOn {
-            
             Vladmir.sharedInstance.scheduleNextNotification()
+            self.handleTimer()
             //todo mudar imagem do botão
-            
         }else{
-            
             Vladmir.sharedInstance.scheduleBreack()
             //todo mudar imagem do botão
-            
         }
-        
     }
     
     @IBAction func notificationTapped(_ sender: Any) {
