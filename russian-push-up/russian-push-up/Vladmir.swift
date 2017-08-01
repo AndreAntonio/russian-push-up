@@ -20,7 +20,7 @@ public class Vladmir {
     var max: Int = 0
     var lastTest: Date
     
-    let program: [(Double, Int)] = [(0.30, 5),
+    let program: [(Double, Int)] = [(0.30, 60),
                                     (0.50, 60),
                                     (0.60, 45),
                                     (0.25, 60),

@@ -10,6 +10,10 @@ import UIKit
 import UserNotifications
 
 class ViewController: UIViewController {
+    
+    
+    @IBOutlet weak var notificationsButton: UIButton!
+    
     var timer = Timer()
     var timeRemaining: Int = 0
     var areNotificationsOn : Bool = true
@@ -50,9 +54,9 @@ class ViewController: UIViewController {
         self.dayOutlet.text = "day \(day + 1)"
         
         if day + 1 > 7 {
-            self.weekDayOutlet.text = "2nd Week"
+            self.weekOutlet.text = "2nd Week"
         } else {
-            self.weekDayOutlet.text = "1st Week"
+            self.weekOutlet.text = "1st Week"
         }
         
         self.currentMaximumOutlet.text = "\(vlad.max)"
@@ -136,13 +140,17 @@ class ViewController: UIViewController {
     }
     
     func handleNotifications() {
+        
+        var imgOn = UIImage(named: "notification-n")
+        var imgOff = UIImage(named: "notification-off")
+        
         if self.areNotificationsOn {
             Vladmir.sharedInstance.scheduleNextNotification()
             self.handleTimer()
-            //todo mudar imagem do botão
+            notificationsButton.setImage(imgOn, for: .normal)
         }else{
             Vladmir.sharedInstance.scheduleBreack()
-            //todo mudar imagem do botão
+            notificationsButton.setImage(imgOff, for: .normal)
         }
     }
     
