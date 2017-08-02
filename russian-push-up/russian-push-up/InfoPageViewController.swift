@@ -13,9 +13,8 @@ class InfoPageViewController: UIPageViewController, UIPageViewControllerDataSour
     private(set)lazy var orderedViewControllers : [UIViewController] = {
         return [self.newVc(viewController: "FirstInfoViewController"),
                 self.newVc(viewController: "SecondInfoViewController"),
-                self.newVc(viewController: "ThirdInfoViewController"),
-                self.newVc(viewController: "FourthInfoViewController"),
-                self.newVc(viewController: "FifthInfoViewController")]
+                self.newVc(viewController: "ThirdInfoViewController")
+               ]
     }()
 
     override func viewDidLoad() {
